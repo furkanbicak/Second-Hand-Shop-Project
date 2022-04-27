@@ -5,7 +5,7 @@ import ProductDetail from '../pages/productDetail/productDetail'
 import MyAccount from '../pages/myAccount/myAccount'
 import ProductAdd from '../pages/productAdd/productAdd'
 import Missing from '../pages/missing/missing'
-import Layout from '../components/layout';
+import Layout from '../components/layout/layout';
 import { Route, Routes } from 'react-router-dom'
 
 function Router() {
