@@ -1,0 +1,16 @@
+html {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    color: #fff;
+}
+
+body {
+    min-height: 100vh;
+    background-color: dodgerblue;
+}
+.flexGrow {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
