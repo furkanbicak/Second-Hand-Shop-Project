@@ -1,0 +1,27 @@
+.main-tab-links ul {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #E0E0E0; 
+    padding-bottom: 1rem; 
+    margin-top: 1.9rem; 
+    justify-content: space-between;
+}
+
+.main-tab-links li {
+    list-style-type: none;
+    font: normal normal bold 15px/20px Nunito;
+    
+}
+.main-tab-links a {
+    text-decoration: none;
+    text-align: center;
+    font: normal normal 600 18px/24px Nunito;
+    letter-spacing: 0px;
+    color: #525252;
+}
+
+.main-tab-links a:hover{
+    color: #4B9CE2;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #4B9CE2;
+}
