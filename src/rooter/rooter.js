@@ -20,7 +20,7 @@ function Router() {
       <Route path="register" element={<Register />} />
       <Route path="category/:id" element={<Parametre />} />
       
-        {/* we want to protect these routes */}
+        {/* Private routes */}
       
         <Route path="productDetail" element={<ProductDetail />} />
       
