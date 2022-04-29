@@ -20,6 +20,26 @@ export const getProducts = async () => {
     }
 }
 
+// The service that brings the product by its id.
+export const getProductsId = async (id) => {
+    try {
+        const res = await axios.get(`${URL.products}/${id}`);
+        
+        if(res.status === 200){
+            console.log("Ürünler İD", res.data)
+            return res.data
+        } 
+        else{
+            return {
+                error: 'Data gelmedi'
+            }
+        }
+       
+    } catch (error) {
+        console.log("error")
+    }
+}
+
 // Service that brings categories and products belonging to that category.
 export const getCategories = async () => {
     try {
