@@ -7,6 +7,7 @@ import ProductAdd from '../pages/productAdd/productAdd'
 import Missing from '../pages/missing/missing'
 import Layout from '../components/layout/layout';
 import { Route, Routes } from 'react-router-dom'
+import Parametre from '../pages/parametre/parametre';
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
       <Route path="home" element={<Home />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
+      <Route path="category/:id" element={<Parametre />} />
       
         {/* we want to protect these routes */}
       
