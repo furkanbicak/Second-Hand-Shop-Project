@@ -21,12 +21,14 @@
 .main-card_content_img {
     display: flex;
     justify-content: center;
-    margin-top: 0.6rem;
 }
 
 .main-card_content_img img{
     width: 260px;
     height: 297px;
+    margin-top: 0.6rem;
+    border-radius: 8px;
+    background: transparent;
 }
 
 .main-card_content_prodcut {
@@ -35,7 +37,6 @@
     margin: 5px 10px 0 10px;
     text-align: left;
     font: normal normal bold 15px/22px Nunito;
-    letter-spacing: 0px;
     color: #4B9CE2;
 }
 
@@ -43,6 +44,5 @@
     margin: 30px 10px 0 10px;
     text-align: left;
     font: normal normal bold 18px/22px Nunito;
-    letter-spacing: 0px;
     color: #3E3E3E;
 }
