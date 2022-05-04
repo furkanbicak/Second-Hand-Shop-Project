@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Input = ({ title, type, name, placeholder }) => {
+const Input = ({ title, type, name, placeholder, onChange }) => {
   return (
     <>
         <div className = 'formGroup_title'>
@@ -14,6 +14,7 @@ const Input = ({ title, type, name, placeholder }) => {
             type            =   {type} 
             name            =   {name}
             placeholder     =   {placeholder}
+            onChange        =   {onChange}
         />
     </>
   )
