@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const token = localStorage.getItem('Token');
+
 export const baseURL = 'https://bootcamp.akbolat.net/';
 export default axios.create({ baseURL });
 
@@ -9,5 +11,15 @@ export const URL = {
     brands      :   '/brands',
     categories  :   '/categories',
     colors      :   '/colors',
-    products    :   '/products'
+    products    :   '/products',
+    offers      :   '/offers'
 }
+
+
+export const Bearer = axios.create({
+    baseURL: 'https://bootcamp.akbolat.net/',
+    timeout: 1000,
+    headers: {'Authorization': 'Bearer ' + token}
+  });
+  
+ 
