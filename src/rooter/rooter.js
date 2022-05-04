@@ -8,6 +8,7 @@ import Missing from '../pages/missing/missing'
 import Layout from '../components/layout/layout';
 import { Route, Routes } from 'react-router-dom'
 import Parametre from '../pages/parametre/parametre';
+import RequireAuth from '../components/RequireAuth'
 
 function Router() {
   return (
@@ -15,19 +16,19 @@ function Router() {
     <Route path="/" element={<Layout />}>
 
       {/* public routes */}
-      <Route path="home" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
       <Route path="category/:id" element={<Parametre />} />
       
         {/* Private routes */}
-      
+      {/* <Route element={<RequireAuth/>}>  */}
         <Route path="productDetail" element={<ProductDetail />} />
       
         <Route path="myAccount" element={<MyAccount />} />
       
         <Route path="productAdd" element={<ProductAdd />} />
-
+      {/* </Route> */}
 
         {/* catch all */}
         <Route path="*" element={<Missing />} />
