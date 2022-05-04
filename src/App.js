@@ -4,7 +4,7 @@ import Router from './rooter/rooter';
 function App() {
   return (
     <div className="App">
-      <Router />
+        <Router />
     </div>
   );
 }
