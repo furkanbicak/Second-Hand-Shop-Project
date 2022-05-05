@@ -7,48 +7,39 @@ import { useParams } from 'react-router-dom';
 import { getCategories } from '../../services/productServices';
 
 const Parametre = () => {
-    const parameter = useParams().id
-    console.log("Parametre",parameter)
-
     const [data, setData] = useState(null);
+    
+    const parameter = useParams().id
 
     useEffect(() => {
         getCategoriesData();
     },[parameter]);
 
     useEffect(() => {
-    console.log("Data",data)
+        console.log("Data",data)
     },[data]);
 
+    //Seçilen kategoriye ait datayı getiren fonksiyon.
     const getCategoriesData = async () => {
-    const data = await getCategories();
-    setData(data[parameter-1].products);
-  }
-  return (
-    <>
-      <div className='main'>
-           <MainNavbar />
+        const data = await getCategories();
+        setData(data[parameter-1].products);
+    }
+
+    return (
+  
+    <div className='main'>
+        <MainNavbar />
     
-            <div className='content'>
-                <MainBanner />
+        <div className='content'>
+            <MainBanner />
 
-                <MainTabLinks />
+            <MainTabLinks />
 
-                <div className="main-card">
-                    {
-                        data?.map((item, index) => {
-                            return(
-                                <MainCard brand={item.brand} color={item.color} price={item.price} url={item.image.url} />
-                            )
-                        })
-                    }
-                </div>
-               
-                
-            </div>
-
+            <MainCard products={data}/>
         </div>
-    </>
+
+    </div>
+    
   )
 }
 
