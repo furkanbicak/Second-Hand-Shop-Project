@@ -1,0 +1,132 @@
+.detail-content {
+    height: 40vw;
+    display: grid;
+    grid-template-columns: minmax(48%, 52%) 1fr;
+    margin: 6.25rem 13.75rem;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+}
+.detail-content_img {
+    width: 100%;
+    height: 40vw;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    object-fit: cover;
+    overflow: hidden;
+}
+.detail-content_img img {
+    width: 100%;
+    height: auto;
+}
+.detail-content_info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 30px 0 0 60px;   
+}
+.detail-content_info_title {
+    text-align: left;
+    font: normal normal normal 34px/23px Nunito;
+    color: #555555;
+}
+.detail-content_info_brand {
+    text-align: left;
+    font: normal normal bold 15px/20px Nunito;
+    color: #525252;
+}
+.detail-content_info_color {
+    text-align: left;
+    font: normal normal bold 15px/20px Nunito;
+    color: #525252;
+}
+.detail-content_info_status {
+    text-align: left;
+    font: normal normal bold 15px/20px Nunito;
+    color: #525252;
+}
+.detail-content_info_price {
+    text-align: left;
+    font: normal normal bold 25px/23px Nunito;
+    color: #525252;
+}
+.detail-content_find-offer{
+    width: 230px;
+    height: 36px;
+    text-align: left;
+    background: #F2F2F2 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+
+    text-align: left;
+    font: normal normal bold 15px/20px Nunito;
+    color: #525252;
+}
+.detail-content_find-offer span{
+    text-align: left;
+    font: normal normal normal 15px/20px Nunito;
+    color: #B1B1B1;
+}
+#buy{
+    width: 235px;
+    height: 45px;
+    /* UI Properties */
+    border: none;
+    cursor: pointer;
+    background: #4B9CE2 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    
+    text-align: center;
+    font: normal normal bold 18px/24px Nunito;
+    color: #FFFFFF;
+}
+#buy:active{
+    box-shadow: 0 5px #CDC9C9;
+    transform: translateY(px);
+}
+#offer{
+    width: 235px;
+    height: 45px;
+    /* UI Properties */
+    border: none;
+    cursor: pointer;
+    background: #F0F8FF 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    
+    text-align: center;
+    font: normal normal bold 18px/24px Nunito;
+    color: #4B9CE2;
+}
+#offer:active{
+    box-shadow: 0 5px #CDC9C9;
+    transform: translateY(px);
+}
+#noSalles {
+    width: 50%;
+    height: 45px;
+    /* UI Properties */
+    border: none;
+    background: #FFF0E2 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+
+    text-align: center;
+    font: normal normal bold 18px/24px Nunito;
+    letter-spacing: 0px;
+    color: #FAAD60;
+}
+.detail-content_info_explanation {
+    text-align: left;
+    font: normal normal bold 18px/24px Nunito;
+    color: #525252;
+}
+.detail-content_info_explanation p {
+    margin: 0.6rem 14rem 0 0 ;
+    text-align: left;
+    font: normal normal normal 15px/23px Nunito;
+    color: #555555;
+}
+.info-text {
+    margin-left: 4rem;
+    text-align: left;
+    font: normal normal normal 15px/20px Nunito;
+    color: #525252;
+}
