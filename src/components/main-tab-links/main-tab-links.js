@@ -27,7 +27,7 @@ const MainTabLinks = () => {
                 {
                     categories && categories?.map((item,index) => {
                         return(
-                            <li>
+                            <li key={index}>
                                 <NavLink to={`/category/${item.id}`}>{item.name}</NavLink>
                             </li>
                         )
