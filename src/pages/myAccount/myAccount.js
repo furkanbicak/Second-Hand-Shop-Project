@@ -1,10 +1,16 @@
-import React from 'react'
+import MainNavbar from '../../components/main-navbar/main-navbar'
+import OfferCard from '../../components/offer-card/offer-card'
 import './myAccount.css'
 
 const MyAccount = () => {
+
   return (
-    <div>MyAccount</div>
+    <>
+        <MainNavbar />
+        <OfferCard />
+    </>
+    
   )
 }
 
-export default MyAccount
+export default MyAccount;
