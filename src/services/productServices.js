@@ -1,6 +1,6 @@
 import axios, { URL } from '../api/axios';
 
-// Service that brings products.
+//? Service that brings products.
 export const getProducts = async () => {
     try {
         const res = await axios.get(URL.products);
@@ -20,7 +20,7 @@ export const getProducts = async () => {
     }
 }
 
-// The service that brings the product by its id.
+//? The service that brings the product by its id.
 export const getProductsId = async (id) => {
     try {
         const res = await axios.get(`${URL.products}/${id}`);
@@ -40,7 +40,7 @@ export const getProductsId = async (id) => {
     }
 }
 
-// Service that brings categories and products belonging to that category.
+//? Service that brings categories and products belonging to that category.
 export const getCategories = async () => {
     try {
         const res = await axios.get(URL.categories);

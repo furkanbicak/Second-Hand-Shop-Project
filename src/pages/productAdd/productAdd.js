@@ -1,88 +1,119 @@
 import React, { useEffect, useState } from 'react'
-import axios, { URL } from '../../api/axios'
-import DropdownButton from '../../components/dropdown-button/dropdown-button'
+
+import Icon from '../../assets/icon.svg'
 import Input from '../../components/input/input'
 import MainNavbar from '../../components/main-navbar/main-navbar'
 import { postProduct } from '../../services/productPostServices'
+import { getCategories } from '../../services/productServices'
+import { getColors } from '../../services/colorService'
 import './productAdd.css'
+import { getStatuses } from '../../services/statusesService'
+import { getBrands } from '../../services/productBrandsServices'
 
 const ProductAdd = () => {
-    const [products, setProducts] = useState(null);
-    const [deneme, setDeneme] = useState({
-        image:''
-    });
+
+    
+   
+
+    const [categories, setCategories] = useState(null);
+    const [productBrand, setProductBrand] = useState(null);
+    const [color, setColor] = useState('');
+    const [statuses, setStatuses] = useState(null);
+
+    const [productName, setProductName] = useState('');
+    const [productDescription, setProductDescription] = useState('');
+    const [categoriesOnChange, setCategoriesOnChange] = useState(null);
+    const [brandOnChange, setProductBrandOnChange] = useState(null);
+    const [colorOnChange, setColorOnChange] = useState('');
+    const [statusesOnChange, setStatusesOnChange] = useState(null);
+    const [price, setPrice] = useState(null);
     
 
-    const token = localStorage.getItem('Token');
-    
 
-    const config = {
-        headers: { 
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data"
-        }
-    };
+    useEffect(() => {
+        getCategoriesData();
+        getColorsData();
+        getStatusesData();
+        getBrandData();
+    },[]);
 
-    // useEffect(() => {
-       
-    // },[])
-    // useEffect(() => {
-       
-    // },[products]);
+    useEffect(() => {
 
-    // const getproductsData = async () => {
-    //     const data = await postProduct();
-    //     setProducts(data);
-    // }
+    },[categories]);
+
+    const getCategoriesData = async () => {
+        const dataCategoris = await getCategories();
+        setCategories(dataCategoris);
+    }
+
+    const getColorsData = async () =>{
+        const dataColor = await getColors();
+        setColor(dataColor);
+    }
+
+    const getStatusesData = async () =>{
+        const dataStatus = await getStatuses();
+        setStatuses(dataStatus);
+    }
+
+    const getBrandData = async () =>{
+        const dataBrands = await getBrands();
+        setProductBrand(dataBrands);
+    }
 
     let formData = new FormData();
 
     const onFileChange = (e) =>{
 
         if(e.target && e.target.files[0]){
-            console.log("Files", e.target.files[0])
-            formData.append('files', e.target.files[0])
+     
+            formData.append('files.image', e.target.files[0])
             formData.append('data', JSON.stringify(
                 {
-                    "name": "Siyah Penye",
-                    "description": "Bir defa kullanıldı.Dar geldiği için satıyorum.",
-                    "category": "1",
-                    "brand": "Zara",
-                    "color": "Siyah",
-                    "status": "Hiç kullanılmadı.",
-                    "price": 321,
+                    'name': productName,
+                    'description': productDescription,
+                    "category": categoriesOnChange,
+                    "brand": brandOnChange,
+                    "color": colorOnChange,
+                    "status": statusesOnChange,
+                    "price": price,
                     "isOfferable": true,
                     "isSold": false,
                     "users_permissions_user": "15",
                 }
             ))
         }
+
     }
 
-    const submitFileData = () =>{
-        console.log("Form Data:",formData)
-        console.log("Form Data:",deneme)
-
-        try {
-            const res = axios.post(`${URL.products}`,
-               formData,
-                config,
-            );
-            
-            if(res.status === 200){
-                console.log("Ürün Kaydedildi:", res.data)
-                return res.data
-            } 
-            else{
-                return {
-                    error: 'Ürün Kaydedilemedi...'
-                }
-            }
-           
-        } catch (error) {
-            console.log("error")
-        }
+    const submitFileData = async () =>{
+        await postProduct(formData);
     }
+    
+    let categoriesList = categories && categories?.map((item, i) => {
+        return (
+          <option key={i} value={item.name}>{item.name}</option>
+        )
+      }, this);
+
+      let colorList = color && color?.map((item, i) => {
+        return (
+          <option key={i} value={item.name}>{item.name}</option>
+        )
+      }, this);
+
+      let statusesList = statuses && statuses?.map((item, i) => {
+        return (
+          <option key={i} value={item.name}>{item.name}</option>
+        )
+      }, this);
+
+      let brandList = productBrand && productBrand?.map((item, i) => {
+        return (
+          <option key={i} value={item.name}>{item.name}</option>
+        )
+      }, this);
+      
     return (
         <>
             <MainNavbar/>
@@ -100,6 +131,7 @@ const ProductAdd = () => {
                                     type        =   {'text'} 
                                     name        =   {'name'} 
                                     placeholder =   {'Örnek: İphone 12 Pro Max'} 
+                                    onChange    =   {(e)=> setProductName(e.target.value)} 
                                 />
                         </div>
 
@@ -109,31 +141,56 @@ const ProductAdd = () => {
                                     type        =   {'text'} 
                                     name        =   {'name'} 
                                     placeholder =   {'Ürün açıklaması girin'} 
+                                    onChange    =   {(e)=> setProductDescription(e.target.value)} 
                                 />
                         </div>
 
                         <div className="product-detail-multi">
-                            
                             <div className="product-detail-dropdown">
 
-                                <DropdownButton title={'Kategori'} />
+                                <div className="product_title title">
+                                    <label className="required">Kategori</label>
+                                </div>
+
+                                <select onChange={(e)=> setCategoriesOnChange(e.target.value) }>
+                                    <option >Kategori Seç</option>
+                                    {categoriesList}       
+                                </select>
                                 
                             </div>
 
                             <div className="product-detail-dropdown">
+                            <div className="product_title title">
+                                    <label className="required">Marka</label>
+                                </div>
 
-                                <DropdownButton title={'Kategori'} />
+                            <select onChange={(e)=> setProductBrandOnChange(e.target.value) }>
+                                    <option >Marka Seç</option>
+                                    {brandList}       
+                                </select>
 
                             </div>
-
                         </div>
 
                         <div className="product-detail-multi">
                             <div className="product-detail-dropdown">
-                                 <DropdownButton title={'Renk'} />
+                            <div className="product_title title">
+                                    <label className="required">Renk</label>
+                                </div>
+
+                            <select onChange={(e)=> setColorOnChange(e.target.value) }>
+                                    <option >Renk Seç</option>
+                                    {colorList}       
+                                </select>
                             </div>
                             <div className="product-detail-dropdown">
-                                <DropdownButton title={'Kullanım Durumu'} />
+                            <div className="product_title title">
+                                    <label className="required">Kullanım Durumu</label>
+                                </div>
+                            <select onChange={(e)=> setStatusesOnChange(e.target.value) }>
+                                    <option >Kullanım Durumu Seç</option>
+                                    {statusesList}       
+                                </select>
                             </div>
                         </div>
 
@@ -144,9 +201,9 @@ const ProductAdd = () => {
                                 type        =   {'number'} 
                                 name        =   {'name'} 
                                 placeholder =   {'Bir fiyat girin TL'} 
+                                onChange    =   {(e)=> setPrice(e.target.value)} 
                             />
 
-                                
                         </div>
 
                         <div className="product-detail-switch">
@@ -166,15 +223,14 @@ const ProductAdd = () => {
                     
                         <div className="prdouct-image-content">
                             <div className="prdouct-image-content_svg">
-                                <img src="icon.svg"/>
+                                <img src={Icon}/>
                             </div>
                             <div className="prdouct-image-content_title">
                                 Sürükleyip bırakarak yükle veya
                             </div>
                             <div className="prdouct-image-content_button">
-                                <button >Görsel Seçin </button>
+                                
                                 <Input id="file" type="file" onChange={onFileChange}/>
-                            
                                 
                             </div>
                             <div className="prdouct-image-warning">

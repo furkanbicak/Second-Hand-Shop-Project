@@ -3,8 +3,16 @@ import ProductAddIcon from '../../assets/productAdd.svg'
 import HomeIcon from '../../assets/home.svg'
 import LogoIcon from '../../assets/logo.svg'
 import './main-navbar.css'
+import { useNavigate } from 'react-router-dom'
+import useAuth from "../../hooks/useAuth";
+
+
 
 const MainNavbar = () => {
+    const { auth } = useAuth();
+    const navigate = useNavigate();
+
+
   return (
     <>
         <header className='main-navbar'>
@@ -14,18 +22,37 @@ const MainNavbar = () => {
                     </div>
                     <nav>
                         <ul>
-                            <li> 
-                            <button> 
+                            <li>
+                           { auth?.accessToken &&     
+                            <button
+                                onClick={()=>navigate('/productadd')}
+                            > 
                                 <img className='svg-icon' src={ProductAddIcon}></img>
                                 Ürün Ekle
                             </button> 
+                            }
+                            </li>
+                            <li>
+                            { auth?.accessToken &&          
+                                <button 
+                                    onClick={()=>navigate('/myaccount')}
+                                >
+                                    <img className='svg-icon' src={HomeIcon}></img>
+                                    Hesabım
+                                </button> 
+                            }
                             </li>
                             <li> 
-                            <button>
-                                <img className='svg-icon' src={HomeIcon}></img>
-                                Giriş Yap
-                            </button> 
+                            { !auth?.accessToken && 
+                                <button 
+                                    onClick={()=>navigate('/login')}
+                                >
+                                    <img className='svg-icon' src={HomeIcon}></img>
+                                    Giriş Yap
+                                </button>
+                            } 
                             </li>
+                            
                         </ul>
                     </nav>
                 </div>

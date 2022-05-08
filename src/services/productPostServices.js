@@ -6,24 +6,15 @@ const config = {
     headers: { Authorization: `Bearer ${token}` }
 };
 
-// Ürün eklemek için servis.
-export const postProduct = async () => {
+
+//? Ürün eklemek için servis.
+export const postProduct = async (formData) => {
 
     try {
         const res = await axios.post(`${URL.products}`,
-            {
-                "name": "Mavi Pantolon",
-                "description": "Bir defa kullanıldı.Dar geldiği için satıyorum.",
-                "category": "1",
-                "brand": "Polo",
-                "color": "Mavi",
-                "status": "Hiç kullanılmadı.",
-                "price": 120,
-                "isOfferable": true,
-                "isSold": false,
-                "users_permissions_user": "15"
-              },
-            config,
+            formData,
+            config
+            
         );
         
         if(res.status === 200){

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { postOffers } from '../../services/productOffersService';
+import { postOffers } from '../../services/productPostOffersServices';
 import useAuth from '../../hooks/useAuth';
 import Button from '../button/button';
 import Input from '../input/input'

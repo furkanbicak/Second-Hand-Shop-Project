@@ -8,6 +8,8 @@ import Logo from '../../assets/logo.svg'
 import useAuth from '../../hooks/useAuth'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios, { URL } from '../../api/axios'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
@@ -19,7 +21,7 @@ const Login = () => {
 
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
-    const [errmsg, setErrMsg] = useState('');
+    const [setErrMsg] = useState('');
      
 
     const handleSubmit = async (e) => {
@@ -38,15 +40,23 @@ const Login = () => {
 
             //! localStorage token kaydet.
             localStorage.setItem('Token', accessToken);
-
-
            
             setAuth({ user, password, accessToken, userId });
             setUser('');
             setPassword('');
             navigate(from, { replace: true });
+
         } catch (err) {
-    
+            toast.error('Email ya da  şifren yalnış...', {
+                position: "top-right",
+                theme: 'colored',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
             if (!err?.response) {
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 400) {
@@ -65,7 +75,7 @@ const Login = () => {
         <div className="login_image">
             <img src={LoginBanner} alt="Girl" />
         </div>
-
+        <ToastContainer/>
         <div className="form">
 
            <div className="form-logo">

@@ -1,6 +1,6 @@
 import { Bearer } from '../api/axios';
 
-// Ürünün isSold değerini change eder.(true-false)
+//? Ürünün isSold değerini change eder.(true-false)
 export const putSoldProduct = async (id, status) => {
 
     await Bearer.put(`/products/${id}`, 

@@ -6,7 +6,7 @@ const config = {
     headers: { Authorization: `Bearer ${token}` }
 };
 
-// teklif vermek için servis.
+//? Teklif vermek için servis.
 export const postOffers = async (id, userId, offerPrice) => {
 
     try {

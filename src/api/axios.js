@@ -12,7 +12,8 @@ export const URL = {
     categories  :   '/categories',
     colors      :   '/colors',
     products    :   '/products',
-    offers      :   '/offers'
+    offers      :   '/offers',
+    statuses    :   '/using-statuses'
 }
 
 

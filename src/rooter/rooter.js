@@ -28,7 +28,7 @@ function Router() {
       {/* <Route element={<RequireAuth/>}>  */}
         <Route path="productDetail" element={<ProductDetail />} />
       
-        <Route path="myAccount" element={<MyAccount />} />
+        <Route path="myAccount" element={<TeklifAldıklarım />} />
 
         <Route path="teklifAl" element={<TeklifAldıklarım />} />
         <Route path="teklifVerdiklerim" element={<TeklifVerdiklerim />} />
