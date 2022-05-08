@@ -10,22 +10,28 @@ import { Route, Routes } from 'react-router-dom'
 import Parametre from '../pages/parametre/parametre';
 import RequireAuth from '../components/RequireAuth'
 
+import TeklifAldıklarım from '../components/teklif-adlıklarım/teklif-aldıklarım';
+import TeklifVerdiklerim from '../components/teklif-verdiklerim/teklif-verdiklerim';
+
 function Router() {
   return (
     <Routes>
     <Route path="/" element={<Layout />}>
 
-      {/* public routes */}
-      <Route path="/" element={<Home />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-      <Route path="category/:id" element={<Parametre />} />
+        {/* public routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login /> } />
+        <Route path="register" element={<Register />} />
+        <Route path="category/:id" element={<Parametre />} />
       
         {/* Private routes */}
       {/* <Route element={<RequireAuth/>}>  */}
         <Route path="productDetail" element={<ProductDetail />} />
       
         <Route path="myAccount" element={<MyAccount />} />
+
+        <Route path="teklifAl" element={<TeklifAldıklarım />} />
+        <Route path="teklifVerdiklerim" element={<TeklifVerdiklerim />} />
       
         <Route path="productAdd" element={<ProductAdd />} />
       {/* </Route> */}
