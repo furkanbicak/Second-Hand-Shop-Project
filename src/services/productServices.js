@@ -60,3 +60,26 @@ export const getCategories = async () => {
 }
 
 
+export const getOffersId = async (id) => {
+    const token = localStorage.getItem('Token');
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
+
+    try {
+        const res = await axios.get(`${URL.offers}/${id}`, config);
+        
+        if(res.status === 200){
+            console.log("Ürünler İD", res.data)
+            return res.data
+        } 
+        else{
+            return {
+                error: 'Data gelmedi'
+            }
+        }
+       
+    } catch (error) {
+        console.log("error")
+    }
+}
