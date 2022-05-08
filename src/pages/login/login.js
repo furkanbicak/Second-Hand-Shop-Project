@@ -20,6 +20,7 @@ const Login = () => {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
     const [errmsg, setErrMsg] = useState('');
+     
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,13 +32,13 @@ const Login = () => {
                     "password": `${password}`
                 }
             );
+
             const userId =  response.data.user.id;
-            console.log("Ne döndü", response.data.user.id);
             const accessToken = response?.data.jwt;
-            console.log("Token", accessToken)
 
             //! localStorage token kaydet.
             localStorage.setItem('Token', accessToken);
+
 
            
             setAuth({ user, password, accessToken, userId });
@@ -45,6 +46,7 @@ const Login = () => {
             setPassword('');
             navigate(from, { replace: true });
         } catch (err) {
+    
             if (!err?.response) {
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 400) {
@@ -69,7 +71,7 @@ const Login = () => {
            <div className="form-logo">
                 <img src={Logo} />
            </div>
-
+          
            <div className="form-login">
 
                <div className="form-login-title">
