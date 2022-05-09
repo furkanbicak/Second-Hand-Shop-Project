@@ -1,4 +1,4 @@
-# React Native Flight Ticket App
+# React Second Hand Shop App
 
 ## ✨ Features
 
